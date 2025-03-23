@@ -1,0 +1,15 @@
+#!/bin/bash
+source ./config.sh
+
+DATE="2025.03.23"
+TYPE="DPC3"
+
+# 원격 서버에 파일 가져오기  (scp -P 옵션으로 포트 지정)
+scp -P $REMOTE_PORT -r $REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR/raw_data/DPC3 $DATA_PATH/REMOTE
+scp -P $REMOTE_PORT -r $REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR/result/DPC3 $RESULT_PATH/REMOTE
+
+mkdir ${RESULT_PATH}/BACKUP/${DATE}
+mv ${RESULT_PATH}/REMOTE/* ${RESULT_PATH}/BACKUP/${DATE}
+
+mkdir ${DATA_PATH}/BACKUP/${DATE}
+mv ${DATA_PATH}/REMOTE/* ${DATA_PATH}/BACKUP/${DATE}
