@@ -12,7 +12,7 @@ run_all() {
 	for champsim_type in "${SIMULATOR_NAMES_RUN[@]}"; do
 		rm ${DATA_PATH}/${app}_${champsim_type}.output
 		${CHAMPSIM_PATH}/bin/${champsim_type} \
-			-w 10000000 -i 25000000 \
+			-w 100000000 -i 250000000 \
 			${CHAMPSIM_PATH}/trace/$app >> ${DATA_PATH}/${app}_${champsim_type}.output &
 	done 
 
@@ -73,15 +73,17 @@ unzip_trace() {
 
 cd $(pwd)/tool/config_generate
 #
-./config_champsim.sh
+# ./make_config.sh
+# ./config_champsim.sh
 cd ../../
 
-MAX_RUN_CORE=$((${#SIMULATOR_NAMES_RUN[@]} / ${NUM_CORE}))
+MAX_RUN_CORE=$((${NUM_CORE} / ${#SIMULATOR_NAMES_RUN[@]}))
 if (( ${MAX_RUN_DISK} < ${MAX_RUN_CORE} )); then
 	MAX_RUN=${MAX_RUN_DISK}
 else
 	MAX_RUN=${MAX_RUN_CORE}
 fi
+echo ${MAX_RUN}
 
 # MAX_RUN씩 실행하는 것 구현 필요 
 for ((i=0; i<${#TRACE_FILES[@]}; i=i+MAX_RUN)); do
@@ -91,7 +93,7 @@ for ((i=0; i<${#TRACE_FILES[@]}; i=i+MAX_RUN)); do
 		if (( ${INDEX} == ${#TRACE_FILES[@]} )); then
 			break
 		fi
-		trace_file=${TRACE_FILES[$index]}
+		trace_file=${TRACE_FILES[${INDEX}]}
 
 		echo unzip $trace_file
 		unzip_trace $trace_file &
@@ -105,7 +107,7 @@ for ((i=0; i<${#TRACE_FILES[@]}; i=i+MAX_RUN)); do
 		if (( ${INDEX} == ${#TRACE_FILES[@]} )); then
 			break
 		fi
-		trace_file=${TRACE_FILES[$index]}
+		trace_file=${TRACE_FILES[${INDEX}]}
 		trace_file="${trace_file%.*}"
 
 		echo run ${trace_file}
@@ -120,7 +122,8 @@ for ((i=0; i<${#TRACE_FILES[@]}; i=i+MAX_RUN)); do
 		if (( ${INDEX} == ${#TRACE_FILES[@]} )); then
 			break
 		fi
-		trace_file=${TRACE_FILES[$index]}
+		trace_file=${TRACE_FILES[${INDEX}]}
+		trace_file="${trace_file%.*}"
 
 		echo rm ${trace_file}
 		rm ${CHAMPSIM_PATH}/trace/${trace_file} &
