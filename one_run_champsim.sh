@@ -9,7 +9,7 @@ run_all() {
 	for champsim_type in "${SIMULATOR_NAMES_RUN[@]}"; do
 		rm ${DATA_ONE_PATH}/${app}_${champsim_type}.output
 		${CHAMPSIM_PATH}/bin/${champsim_type} \
-			-w 10000000 -i 25000000 \
+			-w 100000000 -i 250000000 \
 			$app >> ${DATA_ONE_PATH}/${app}_${champsim_type}.output &
 			# $app $app $app $app >> ${DATA_ONE_PATH}/${app}_${champsim_type}.output &
 			# -w 100000000 -i 250000000 \
@@ -45,8 +45,8 @@ run_all() {
 
 cd $(pwd)/tool/config_generate
 #
-./make_config.sh
-./config_champsim.sh
+# ./make_config.sh
+# ./config_champsim.sh
 cd ../../
 
 echo $trace_file

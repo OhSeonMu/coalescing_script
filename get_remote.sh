@@ -1,7 +1,7 @@
 #!/bin/bash
 source ./config.sh
 
-DATE="2025.03.23"
+DATE="2025.03.24"
 TYPE="DPC3"
 
 # 원격 서버에 파일 가져오기  (scp -P 옵션으로 포트 지정)

@@ -73,8 +73,8 @@ unzip_trace() {
 
 cd $(pwd)/tool/config_generate
 #
-# ./make_config.sh
-# ./config_champsim.sh
+./make_config.sh
+./config_champsim.sh
 cd ../../
 
 MAX_RUN_CORE=$((${NUM_CORE} / ${#SIMULATOR_NAMES_RUN[@]}))

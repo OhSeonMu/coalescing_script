@@ -19,8 +19,8 @@ NUM_CORE=$(nproc)
 # Champsim bin file 
 SIMULATOR_NAMES_RUN=( 
 # "default" 
-"coalescing" "coalescing_block" "coalescing_ablock" "coalescing_aablock"
-"coalescing_tlb" "coalescing_tlb_block" "coalescing_tlb_ablock" "coalescing_tlb_aablock"
+"coalescing" "coalescing_block" "coalescing_ablock" "coalescing_aablock" "coalescing_aaablock"
+"coalescing_tlb" "coalescing_tlb_block" "coalescing_tlb_ablock" "coalescing_tlb_aablock" "coalescing_tlb_aaablock"
 # "perfect_tlb" "perfect_l1" "perfect_l2" "perfect_l3" 
 # "all_spp" "all_ampm" "all_berti" "all_bingo" "all_ip" "all_next"
 # "data_spp" "data_ampm" "data_berti" "data_bingo" "data_ip" "data_next" 
@@ -91,8 +91,8 @@ SIMULATOR_NAMES_RUN=(
 
 SIMULATOR_NAMES=( 
 # "default" 
-"coalescing" "coalescing_block" "coalescing_ablock" "coalescing_aablock"
-"coalescing_tlb" "coalescing_tlb_block" "coalescing_tlb_ablock" "coalescing_tlb_aablock"
+"coalescing" "coalescing_block" "coalescing_ablock" "coalescing_aablock" "coalescing_aaablock"
+"coalescing_tlb" "coalescing_tlb_block" "coalescing_tlb_ablock" "coalescing_tlb_aablock" "coalescing_tlb_aaablock"
 # "perfect_tlb" "perfect_l1" "perfect_l2" "perfect_l3" 
 # "all_spp" "all_ampm" "all_berti" "all_bingo" "all_ip" "all_next"
 # "data_spp" "data_ampm" "data_berti" "data_bingo" "data_ip" "data_next" 
